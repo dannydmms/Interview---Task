@@ -12,8 +12,8 @@ public class GameEvents : MonoBehaviour
         instance = this;
     }
 
-    public event Action<ItemDatabase> BuyItem;
-    public void OnBuyItem(ItemDatabase item)
+    public event Action<Item> BuyItem;
+    public void OnBuyItem(Item item)
     {
         if (BuyItem != null)
         {
@@ -21,13 +21,30 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-    public event Action<ItemDatabase> SellItem;
-    public void OnSellItem(ItemDatabase item)
+    public event Action<Item> SellItem;
+    public void OnSellItem(Item item)
     {
         if(SellItem != null)
         {
             SellItem(item);
         }
     }
-    
+
+    public event Action OpenSellStore;
+    public void OnOpenSellStore()
+    {
+        if(OpenSellStore != null)
+        {
+            OpenSellStore();
+        }
+    }
+    public event Action OpenBuyStore;
+    public void OnOpenBuyStore()
+    {
+        if (OpenBuyStore != null)
+        {
+            OpenBuyStore();
+        }
+    }
+
 }

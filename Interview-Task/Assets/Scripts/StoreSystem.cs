@@ -5,18 +5,37 @@ using UnityEngine;
 public class StoreSystem : MonoBehaviour
 {
     [SerializeField] private int currentMoney = 9999;
-
-    public void BuyItem(ItemDatabase itemDatabase)
+    [SerializeField] private List<GameObject> allItemSellStore = new List<GameObject>();
+    public void BuyItem(Item itemDatabase)
     {
-        if (currentMoney > itemDatabase.itemBuyCost)
+        if (currentMoney > itemDatabase.GetItemDatabase().itemSellCost)
         {
+            currentMoney -= itemDatabase.GetItemDatabase().itemBuyCost;
+            itemDatabase.GetItemDatabase().isInIventory = true;
             GameEvents.instance.OnBuyItem(itemDatabase);
-            currentMoney -= itemDatabase.itemBuyCost;
         }
     }
-    public void SellItem(ItemDatabase itemDatabase)
+    public void SellItem(Item itemDatabase)
     {
-        currentMoney += itemDatabase.itemSellCost;
+        currentMoney += itemDatabase.GetItemDatabase().itemSellCost;
+        itemDatabase.GetItemDatabase().isInIventory = false;
         GameEvents.instance.OnSellItem(itemDatabase);
+    }
+
+    public void OpenSelltore()
+    {
+        foreach (var item in allItemSellStore)
+        {
+            item.gameObject.SetActive(false);
+        }
+        GameEvents.instance.OnOpenSellStore();
+    }
+    public void OpenBuyStore()
+    {
+        foreach (var item in allItemSellStore)
+        {
+            item.gameObject.SetActive(true);
+        }
+        GameEvents.instance.OnOpenBuyStore();
     }
 }
