@@ -16,9 +16,14 @@ public class IventorySystem : MonoBehaviour
     [SerializeField] private SpriteRenderer playerHood;
     [SerializeField] private SpriteRenderer playerBody;
     [SerializeField] private SpriteRenderer playerFace;
+    private void Start()
+    {
+        GameEvents.instance.BuyItem += AddToIventory;
+        GameEvents.instance.SellItem += RemoveFromIventory;
+    }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I)) 
+        if (Input.GetKeyDown(KeyCode.I))
         {
             IventoryOpenClsoe();
         }
@@ -51,5 +56,17 @@ public class IventorySystem : MonoBehaviour
         playerFace.sprite = previewFace.sprite;
         playerBody.sprite = previewBody.sprite;
         iventoryMenu.SetActive(false);
+    }
+
+    void AddToIventory(ItemDatabase item)
+    {
+        itemList.Add(item);
+    }
+    void RemoveFromIventory(ItemDatabase item)
+    {
+        if (itemList.Contains(item))
+        {
+            itemList.Remove(item);
+        }
     }
 }
