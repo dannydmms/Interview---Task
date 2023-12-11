@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a1eb2fa1e920654488e446a4e55d8e03, type: 3}
   m_Name: Item0
-  m_EditorClassIdentifier: Assembly-CSharp::ItemCreator
+  m_EditorClassIdentifier: 
   itemID: 0
   itemName: Item0
   itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  itemBuyCost: 5
-  itemSellCost: 5
+  itemBuyCost: 10
+  itemSellCost: 2
