@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InventorySystem : MonoBehaviour
 {
     [SerializeField] private GameObject inventoryMenu;
+    [SerializeField] private GameObject blackout;
     [SerializeField] private List<Item> itemList;
     [SerializeField] private Image previewHood;
     [SerializeField] private Image previewBody;
@@ -30,10 +31,10 @@ public class InventorySystem : MonoBehaviour
             InventoryOpenClsoe();
         }
     }
-
     void InventoryOpenClsoe()
     {
         inventoryMenu.SetActive(!inventoryMenu.activeSelf);
+        blackout.SetActive(!blackout.activeSelf);
         previewFace.sprite = playerFace.sprite;
         previewBody.sprite = playerBody.sprite;
         previewHood.sprite = playerHood.sprite;
@@ -66,6 +67,7 @@ public class InventorySystem : MonoBehaviour
         playerFace.sprite = previewFace.sprite;
         playerBody.sprite = previewBody.sprite;
         inventoryMenu.SetActive(false);
+        blackout.SetActive(false);
     }
 
     void AddToInventory(Item item)

@@ -15,7 +15,6 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Image>().sprite = itemBase.itemSprite;
         if (nameText != null)
         {
             nameText.text = itemBase.itemName;

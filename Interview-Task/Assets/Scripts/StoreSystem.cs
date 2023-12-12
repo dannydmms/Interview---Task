@@ -8,10 +8,12 @@ public class StoreSystem : MonoBehaviour
     [SerializeField] private int currentMoney = 9999;
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private List<GameObject> allItemSellStore = new List<GameObject>();
-
+    [SerializeField] private GameObject helpMenu;
+    [SerializeField] private int helpTimer = 5;
     private void Start()
     {
         moneyText.text = currentMoney.ToString();
+        StartCoroutine(HelpMenu());
     }
     public void BuyItem(Item itemDatabase)
     {
@@ -46,5 +48,17 @@ public class StoreSystem : MonoBehaviour
             item.gameObject.SetActive(true);
         }
         GameEvents.instance.OnOpenBuyStore();
+    }
+
+    IEnumerator HelpMenu()
+    {
+        yield return new WaitForSeconds(helpTimer);
+        helpMenu.SetActive(false);
+
+    }
+    public void OpenHelpMenu()
+    {
+        helpMenu.SetActive(true);
+        StartCoroutine(HelpMenu());
     }
 }
