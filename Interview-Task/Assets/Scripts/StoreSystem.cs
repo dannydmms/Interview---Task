@@ -19,7 +19,7 @@ public class StoreSystem : MonoBehaviour
         {
             currentMoney -= itemDatabase.GetItemDatabase().itemBuyCost;
             moneyText.text = currentMoney.ToString();
-            itemDatabase.GetItemDatabase().isInIventory = true;
+            itemDatabase.SetInInventory(true);
             GameEvents.instance.OnBuyItem(itemDatabase);
         }
     }
@@ -27,7 +27,7 @@ public class StoreSystem : MonoBehaviour
     {
         currentMoney += itemDatabase.GetItemDatabase().itemSellCost;
         moneyText.text = currentMoney.ToString();
-        itemDatabase.GetItemDatabase().isInIventory = false;
+        itemDatabase.SetInInventory(false);
         GameEvents.instance.OnSellItem(itemDatabase);
     }
 

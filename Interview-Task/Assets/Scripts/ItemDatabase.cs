@@ -11,6 +11,5 @@ public class ItemDatabase : ScriptableObject
     public Sprite itemSprite;
     public int itemBuyCost;
     public int itemSellCost;
-    public bool isInIventory = false;
 
 }

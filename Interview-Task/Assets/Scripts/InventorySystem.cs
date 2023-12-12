@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IventorySystem : MonoBehaviour
+public class InventorySystem : MonoBehaviour
 {
-    [SerializeField] private GameObject iventoryMenu;
+    [SerializeField] private GameObject inventoryMenu;
     [SerializeField] private List<Item> itemList;
     [SerializeField] private Image previewHood;
     [SerializeField] private Image previewBody;
@@ -18,8 +18,8 @@ public class IventorySystem : MonoBehaviour
     [SerializeField] private SpriteRenderer playerFace;
     private void Start()
     {
-        GameEvents.instance.BuyItem += AddToIventory;
-        GameEvents.instance.SellItem += RemoveFromIventory;
+        GameEvents.instance.BuyItem += AddToInventory;
+        GameEvents.instance.SellItem += RemoveFromInventory;
         GameEvents.instance.OpenSellStore += CurrentItens;
 
     }
@@ -27,20 +27,20 @@ public class IventorySystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            IventoryOpenClsoe();
+            InventoryOpenClsoe();
         }
     }
 
-    void IventoryOpenClsoe()
+    void InventoryOpenClsoe()
     {
-        iventoryMenu.SetActive(!iventoryMenu.activeSelf);
+        inventoryMenu.SetActive(!inventoryMenu.activeSelf);
         previewFace.sprite = playerFace.sprite;
         previewBody.sprite = playerBody.sprite;
         previewHood.sprite = playerHood.sprite;
 
         foreach (var item in allItems)
         {
-            if (item.GetItemDatabase().isInIventory)
+            if (item.CheckIsInventory())
             {
                 item.GetComponent<Button>().interactable = true;
             }
@@ -65,10 +65,10 @@ public class IventorySystem : MonoBehaviour
         playerHood.sprite = previewHood.sprite;
         playerFace.sprite = previewFace.sprite;
         playerBody.sprite = previewBody.sprite;
-        iventoryMenu.SetActive(false);
+        inventoryMenu.SetActive(false);
     }
 
-    void AddToIventory(Item item)
+    void AddToInventory(Item item)
     {
         if (!itemList.Contains(item))
         {
@@ -83,7 +83,7 @@ public class IventorySystem : MonoBehaviour
             }
         }
     }
-    void RemoveFromIventory(Item item)
+    void RemoveFromInventory(Item item)
     {
         if (itemList.Contains(item))
         {

@@ -11,6 +11,7 @@ public class Item : MonoBehaviour
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private GameObject buyButton;
     [SerializeField] private GameObject sellButton;
+    [SerializeField]private bool isInInventory = false;
 
     void Start()
     {
@@ -60,4 +61,13 @@ public class Item : MonoBehaviour
             priceText.text = itemBase.itemSellCost.ToString();
         }
     }
+    public bool CheckIsInventory()
+    {
+        return isInInventory;
+    }
+    public void SetInInventory(bool value)
+    {
+        isInInventory = value;
+    }
+
 }

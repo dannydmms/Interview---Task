@@ -10,14 +10,13 @@ public class Player : MonoBehaviour
     float horizontal;
     float vertical;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerRig = this.GetComponent<Rigidbody2D>();
         playerAnimator = this.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
