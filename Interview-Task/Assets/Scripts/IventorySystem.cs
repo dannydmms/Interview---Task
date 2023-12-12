@@ -21,6 +21,7 @@ public class IventorySystem : MonoBehaviour
         GameEvents.instance.BuyItem += AddToIventory;
         GameEvents.instance.SellItem += RemoveFromIventory;
         GameEvents.instance.OpenSellStore += CurrentItens;
+
     }
     void Update()
     {
@@ -72,7 +73,7 @@ public class IventorySystem : MonoBehaviour
         if (!itemList.Contains(item))
         {
             itemList.Add(item);
-            item.GetComponent<Button>().interactable = true;
+            //item.GetComponent<Button>().interactable = true;
             foreach (var items in allItems)
             {
                 if (item.GetItemDatabase().itemID == items.GetItemDatabase().itemID)

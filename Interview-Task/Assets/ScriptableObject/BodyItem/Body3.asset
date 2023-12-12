@@ -17,3 +17,4 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 124013dbba7f284489ac16156c930131, type: 3}
   itemBuyCost: 20
   itemSellCost: 5
+  isInIventory: 0
