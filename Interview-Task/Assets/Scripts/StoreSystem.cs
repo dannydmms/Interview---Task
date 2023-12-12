@@ -15,6 +15,9 @@ public class StoreSystem : MonoBehaviour
         moneyText.text = currentMoney.ToString();
         StartCoroutine(HelpMenu());
     }
+    /// <summary>
+    /// check if player have money enought to buy the current item
+    /// </summary> 
     public void BuyItem(Item itemDatabase)
     {
         if (currentMoney > itemDatabase.GetItemDatabase().itemSellCost)
@@ -25,6 +28,9 @@ public class StoreSystem : MonoBehaviour
             GameEvents.instance.OnBuyItem(itemDatabase);
         }
     }
+    /// <summary>
+    /// sell the current item
+    /// </summary>
     public void SellItem(Item itemDatabase)
     {
         currentMoney += itemDatabase.GetItemDatabase().itemSellCost;
@@ -33,6 +39,9 @@ public class StoreSystem : MonoBehaviour
         GameEvents.instance.OnSellItem(itemDatabase);
     }
 
+    /// <summary>
+    /// open the store to sell item
+    /// </summary>
     public void OpenSelltore()
     {
         foreach (var item in allItemSellStore)
@@ -41,6 +50,9 @@ public class StoreSystem : MonoBehaviour
         }
         GameEvents.instance.OnOpenSellStore();
     }
+    /// <summary>
+    /// open the store to buy item
+    /// </summary>
     public void OpenBuyStore()
     {
         foreach (var item in allItemSellStore)
@@ -49,16 +61,18 @@ public class StoreSystem : MonoBehaviour
         }
         GameEvents.instance.OnOpenBuyStore();
     }
-
+    /// <summary>
+    /// open the help menu
+    /// </summary>
+    public void OpenHelpMenu()
+    {
+        helpMenu.SetActive(true);
+        StartCoroutine(HelpMenu());
+    }
     IEnumerator HelpMenu()
     {
         yield return new WaitForSeconds(helpTimer);
         helpMenu.SetActive(false);
 
-    }
-    public void OpenHelpMenu()
-    {
-        helpMenu.SetActive(true);
-        StartCoroutine(HelpMenu());
     }
 }

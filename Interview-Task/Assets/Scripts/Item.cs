@@ -26,10 +26,16 @@ public class Item : MonoBehaviour
         GameEvents.instance.OpenSellStore += EnableSellButton;
         GameEvents.instance.OpenBuyStore += EnableBuyButton;
     }
+    /// <summary>
+    /// get the item database
+    /// </summary>
     public ItemDatabase GetItemDatabase()
     {
         return itemBase;
     }
+    /// <summary>
+    /// enable the buy button
+    /// </summary>
     public void EnableBuyButton()
     {
         if (sellButton != null)
@@ -45,6 +51,9 @@ public class Item : MonoBehaviour
             priceText.text = itemBase.itemBuyCost.ToString();
         }
     }
+    /// <summary>
+    /// enable the sell button
+    /// </summary>
     public void EnableSellButton()
     {
         if (sellButton != null)
@@ -60,10 +69,18 @@ public class Item : MonoBehaviour
             priceText.text = itemBase.itemSellCost.ToString();
         }
     }
+    /// <summary>
+    /// return if is in inventoru
+    /// </summary>
+    /// <returns></returns>
     public bool CheckIsInventory()
     {
         return isInInventory;
     }
+    /// <summary>
+    /// set if is in the inventory
+    /// </summary>
+    /// <param name="value"></param>
     public void SetInInventory(bool value)
     {
         isInInventory = value;

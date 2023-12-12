@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
         playerAnimator = this.GetComponent<Animator>();
     }
 
-
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
@@ -28,8 +27,10 @@ public class Player : MonoBehaviour
         Movement();
         FlipPlayer();
     }
-
-    void Movement()
+    /// <summary>
+    /// move player using input and speed, play waking animaion or idle animation
+    /// </summary>
+    private void Movement()
     {
         playerRig.velocity = new Vector2(horizontal, vertical) * speed;
         if (horizontal == 0 && vertical == 0)
@@ -41,6 +42,9 @@ public class Player : MonoBehaviour
             playerAnimator.SetBool("Walking", true);
         }
     }
+    /// <summary>
+    /// flip player based on horizontal
+    /// </summary>
     void FlipPlayer()
     {
         if (horizontal < 0)

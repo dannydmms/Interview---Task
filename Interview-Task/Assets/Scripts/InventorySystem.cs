@@ -31,6 +31,9 @@ public class InventorySystem : MonoBehaviour
             InventoryOpenClsoe();
         }
     }
+    /// <summary>
+    /// open and close the inventory placing the current using sprite and enable current item in inventory
+    /// </summary>
     void InventoryOpenClsoe()
     {
         inventoryMenu.SetActive(!inventoryMenu.activeSelf);
@@ -48,6 +51,10 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// change current sprites from preview 
+    /// </summary>
+    #region ChangeSprites
     public void ChangeHead(Item itemIventory)
     {
         previewHood.sprite = itemIventory.GetItemDatabase().itemSprite;
@@ -60,7 +67,10 @@ public class InventorySystem : MonoBehaviour
     {
         previewFace.sprite = itemIventory.GetItemDatabase().itemSprite;
     }
-
+    #endregion
+    /// <summary>
+    /// confirm current changes on preview to player
+    /// </summary>
     public void ConfirmChanges()
     {
         playerHood.sprite = previewHood.sprite;
@@ -69,13 +79,14 @@ public class InventorySystem : MonoBehaviour
         inventoryMenu.SetActive(false);
         blackout.SetActive(false);
     }
-
+    /// <summary>
+    /// add item to inventory to be interactable
+    /// </summary>
     void AddToInventory(Item item)
     {
         if (!itemList.Contains(item))
         {
             itemList.Add(item);
-            //item.GetComponent<Button>().interactable = true;
             foreach (var items in allItems)
             {
                 if (item.GetItemDatabase().itemID == items.GetItemDatabase().itemID)
@@ -85,6 +96,9 @@ public class InventorySystem : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// remove item to inventory to dont be interactable
+    /// </summary>
     void RemoveFromInventory(Item item)
     {
         if (itemList.Contains(item))
@@ -100,6 +114,9 @@ public class InventorySystem : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// check current item in iventory
+    /// </summary>
     void CurrentItens()
     {
         foreach (var item in itemList)

@@ -6,6 +6,10 @@ public class Shopkeeper : MonoBehaviour
 {
     [SerializeField] private GameObject store;
     [SerializeField] private GameObject blackout;
+
+    /// <summary>
+    /// check if player is on collider to open the store ui
+    /// </summary>
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -18,6 +22,9 @@ public class Shopkeeper : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// check if player left the store area to close the store ui
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -30,7 +37,9 @@ public class Shopkeeper : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// close store ui
+    /// </summary>
     public void CloseStore()
     {
         store.SetActive(false);
